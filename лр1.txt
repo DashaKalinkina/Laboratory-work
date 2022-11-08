@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        let number = prompt ("Введи число")
+        sub = number
+        let division
+        for (let i = 1; i <= number; i++) {
+            sub = number
+            console.log (i)
+            while (sub > 0) {
+                sub -= i
+                if (sub == 0){
+                    console.log("HERE") 
+                    if (isPrimeDivisor(i)){
+                        division = i
+                }
+                }
+            }
+        }    
+    
+      console.log(division)
+      function isPrimeDivisor(i){
+        let sub, counter = 0
+        for(j =1; j<=i;j++){
+            sub = i
+            while (sub>0){
+                sub -=j
+                if( sub == 0){
+                counter ++;
+                }
+            }
+        }
+        console.log ("counter= " + counter)
+         if (counter == 2) {
+            return true
+         }
+         else {
+            return false
+         }
+    }
+
+        </script>
+</body>
+</html>
