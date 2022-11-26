@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <p><textarea id="txt"placeholder="Введите номер:"></textarea></p>
+    <button id="btn1">Введите номер</button>> 
+    <p><button id="btn2">Искать математическое ожидание</button></p>
+    <p><button id="btn3">Среднеквадратичное отклонение</button></p>
+    <p><button id="btn4">Min & Max</button></p>
+
+    <script type="text/javascript">
+
+        let btn1 = document.getElementById('btn1');
+        let btn2 = document.getElementById('btn2');
+        let btn3 = document.getElementById('btn3');
+        let btn4 = document.getElementById('btn4');
+        let txt = document.getElementById('txt');
+
+      
+      
+      let random = 1;
+      let sum = 0;
+      let g=0
+      let min = 0;
+      let max = 0;
+      let arr = []
+      
+
+      btn1.onclick = function(){
+              arr.push(txt.value);
+          }
+     
+          btn2.onclick = function() {
+           random = 1/arr.length;
+           for(let i = 0; i< arr.length;i++) {
+            sum += arr[i]* random;
+            console.log(sum);
+           }
+           alert (Math.round(sum))
+        }
+          btn3.onclick = function() {
+            n = arr.length
+           if (n>25){
+               g = Math.sqrt(Math.pow (sum, 2)/n)}
+                                    
+           else {(g=Math.sqrt(Math.pow (sum, 2)/n-1))}
+            console.log(g);
+            alert (Math.round(g));
+        }
+
+          btn4.onclick = function(){
+            min = arr[0];
+            max = arr[0];
+              for(let i = 1; i < arr.length; i++){
+                if(min < arr[i]){
+                    min = Math.min(...arr);
+                }
+                if (max > arr[i]){
+                    max = Math.max(...arr);
+                }
+            }
+            console.log(min);
+            console.log(max);
+            
+             alert("наибольшее число =" + max + " наименьшее число =" + min);
+              }
+           
+      </script>
+</body>
+</html>
