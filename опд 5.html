@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <p><textarea id="txt"placeholder="Введите номер:"></textarea></p>
+    <button id="btn1">Введите номер</button>> 
+    <p><button id="btn2">Сортировка</button></p>
+     
+        
+    <script type="text/javascript">
+
+        let btn1 = document.getElementById('btn1');
+        let btn2 = document.getElementById('btn2');
+        let txt = document.getElementById('txt');
+
+        let arr = []
+        let twoarr = []
+        let OK
+        btn1.onclick = function(){
+            arr.push(txt.value)
+            console.log(txt.value)
+            txt.value = ""
+            AddPArr(twoarr)
+        }
+        btn2.onclick = function(){
+            BubbleSort(arr)
+            console.log(arr)
+            console.log(twoarr)
+
+
+        }
+        function AddPArr(twoarr){
+            for(i=0; i<arr.length; i++){
+                if (txt.value==arr[i]){
+                    for(j=0; j<twoarr.length; j++){
+                        if(txt.value==twoarr[j]){
+                            twoarr[j]++
+                        }
+                        else{
+                            twoarr.push()
+                        }
+                    }
+                }
+            }   
+        }
+        function BubbleSort(arr){
+            for(i=arr.length; i>0;i--){
+               for(j=1; j<arr.length;j++){
+                   if(arr[j]<arr[j-1]){
+                       let swapper = arr[j]
+                       arr[j] = arr[j-1]
+                       arr[j-1] = swapper
+                       OK = true
+                   }
+                   if (OK!=true){
+                    
+                   }
+               }
+            }  
+        }
+    </script>
+</body>
+</html>
+
+  
