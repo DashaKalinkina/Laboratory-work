@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+           class Phone  {
+            constructor (app_list,memory) {
+           this.app_list=app_list;
+           this.memory=memory;
+           this.listapp = [];
+           this.freememory = [];
+            }
+            installApplcation (app_list, freememory){
+                this. memory-= freememory; 
+                this.listapp.push (app_list);
+                this.freememory.push(freememory);
+            }
+            deleteApplication(app_list){
+                let n = this.listapp.indexOf(app_list);
+                this.listapp.splice(n, 1);
+                this.memory += this.freememory[n];
+                this.freememory.splice(n, 1);
+                }
+            }
+            
+    </script>
+</body>
+</html>
