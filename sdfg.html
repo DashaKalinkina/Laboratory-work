@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <main id="main">
+    <form id="calc_form">
+      <header class="calc_header">
+        <input
+          type="text"
+          disabled
+          id="output"
+          class="calc_output"
+          value="0"
+        />
+      </header>
+      <footer class="calc_footer">
+        <div class="btn_group">
+          <button
+            data-type="clear"
+            type="reset"
+            value="clear"
+            class="btn btn-grey"
+          >
+            C
+          </button>
+         
+         
+          <button data-type="op" value="/" class="btn ">
+            ÷
+          </button>
+        </div>
+        <div class="btn_group">
+          <button
+            data-type="op_"
+            value="7"
+            class="btn btn-dark-grey"
+            id="7"
+          >
+            7
+          </button>
+          <button data-type="op_" value="8" class="btn ">
+            8
+          </button>
+          <button data-type="op_" value="9" class="btn ">
+            9
+          </button>
+          <button data-type="op" value="*" class="btn ">
+            x
+          </button>
+        </div>
+        <div class="btn_group">
+          <button data-type="op_" value="4" class="btn ">
+            4
+          </button>
+          <button data-type="op_" value="5" class="btn">
+            5
+          </button>
+          <button data-type="op_" value="6" class="btn ">
+            6
+          </button>
+          <button data-type="op" value="-" class="btn ">
+            -
+          </button>
+        </div>
+        <div class="btn_group">
+          <button data-type="op_" value="1" class="btn ">
+            1
+          </button>
+          <button data-type="op_" value="2" class="btn ">
+            2
+          </button>
+          <button data-type="op_" value="3" class="btn ">
+            3
+          </button>
+          <button data-type="op" value="+" class="btn ">
+            +
+          </button>
+        </div>
+        <div class="btn_group">
+          <button data-type="op_" value="0" > 0</button>
+          
+          <button value="=" data-type="op" class="btn ">
+            =
+          </button>
+          <button value="!" data-type="op" class="btn ">
+            !
+          </button>
+        </div>
+      </footer>
+    </form>
+  </main>
+  <script src="c.js"></script>
+</body>
+</html>
