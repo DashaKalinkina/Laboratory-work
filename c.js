@@ -73,7 +73,8 @@ opbtns.forEach((btn) => {
     // document.getElementById("result").innerHTML = result;
    
     // result.innerText += value;     }
-    function factorial(output) {
+   /*  function factorial(output) {
         return (output!= 1) ? output * factorial(output - 1) : 1;
         equation.push(output.value);
       }
+ */
