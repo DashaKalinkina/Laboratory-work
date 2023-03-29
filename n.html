@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bank.css">
+
+
+</head>
+<body>
+    
+    <button onclick=" let a = new Bank; a.paymobile()" class="btn" id = "button1" >Заплатить за мобильную связь</button>
+    <button   onclick="let b = new Bank; b.cash() "class="btn" id = "button2">Снять наличные</button>
+    <button  onclick=" let c = new Bank; c.replenishment ()"class="btn" id = "button3">Пополнить счет</button>
+    <button  onclick="let d = new Bank; d.balance () "class="btn" id = "button4">Проверить баланс</button>
+    <button  onclick="  let f = new Bank; f. enterTHEpassword()"class="btn" id = "button5">Ввести пароль</button>
+    <button  onclick="let g = new Bank; g.changpassword ()  "class="btn" id = "button6">Сменить пароль</button>
+    <button  onclick=" let h = new Bank; h.transfMoney()"class="btn" id = "button7">Перевести</button>
+
+    <script>
+      class User  {
+            constructor (ncard, parol, name, surname) {
+           this.ncard=[784545551,78465484,5555555,714825936];
+           this.parol=[123445,456786,7148, 7145];
+           this.name=["Dasha", "Masha", "Sasha", "Masha",];
+           this.surname=["Ivanova", "Petrova", "Bazarova"];
+           this.money=[10000,6565,5];
+            }
+        }
+
+        /* "button1.onclick = function()
+         {
+        let a = new Bank; a.paymobile() // проверка пароля на валидность
+     //оплата мобильной связи
+        }
+
+        document.getElementById("button2").onclick = function()
+         {
+          let b = new Bank; b.cash() // снять наличные
+        }
+
+        document.getElementById("button3").onclick = function()
+         {
+          let c = new Bank; c.changpassword ()//изменение пароля
+        }
+
+
+        document.getElementById("button4").onclick = function()
+         {
+          let d = new Bank; d.Balance()//просмотр баланса
+        }
+
+        document.getElementById("button5").onclick = function()
+         {
+          let f = new Bank; f.entering_verifying ()//метод ввода и проверки корректности пароля
+        }
+
+
+        document.getElementById("button6").onclick = function()
+         {
+          let g = new Bank; g.enterTHEpassword()// ввод пароля
+        }
+
+        document.getElementById("button7").onclick = function()
+         {
+          let h = new Bank; h.transfMoney()//перевести деньги
+        }
+       */
+
+        let ncard = 0;
+        let summC = 0;
+        let oplata = false;
+        let u = new User()
+
+        class Bank {
+  paymobile() {
+    {
+                alert("Сумма оплаты мобильной связи 500 рублей");
+                if(oplata == false){
+                    if(summC >= 500){
+                        summC -= 500;
+                        alert(`Спасибо! Мы получили оплату.На вашем балансе теперь  ${summC}  рублей`)
+                        oplata = true;
+                    }
+                    else{
+                        alert(`На вашем счете недостаточно средств! У вас ${summC} рублей,необходимо - 500 рублей`)
+                    }
+                }
+                else{
+                    alert("Мы получили вашу оплату!")
+                }
+              // проверка пароля на валидность
+  }   //оплата мобильной связи
+  }
+   cash(){
+                let summ = prompt("Введите сумму, которую хотите снять");
+                if(summC >= summ){
+                    summC -= summ;
+                    alert(`Вы сняли ${summ}. Остаток на счёте ${summC}. `);
+                }
+                else{
+                    alert("На вашем счёте недостаточно средств.");
+                }
+            }// Снять наличные
+         replenishment () {
+
+          let summ = prompt("Введите сумму пополнения");
+                summC += Number(summ);
+                alert(`Вы пополнили баланс на ${summ} рублей.На вашей карте ${summC}`)
+         } //пополнение счета
+
+ balance () {
+
+  alert(`На вашей карте ${summC.toFixed(1)} рублей  `)
+ }  //просмотр баланса
+
+
+
+
+ enterTHEpassword(){
+ 
+                let ncard = prompt("Введите свою карту");
+                let z=true
+                for(let i = 0; i <= u.ncard.length; i++){
+                    if(ncard == u.ncard[i]){
+                        let password = prompt("Введите пароль к карте");
+                        if(password == u.parol[i]){
+                        let name = 0;
+                            switch(u.ncard[i]){
+                                case 784545551 :
+                                    break;
+                                case 714825936 :
+                                    break;
+                                case 5555555 :
+                                    name = 1;
+                                    break;
+                                case 78465484 :
+                                    name = 2;
+                                    break;
+                            } 
+                            alert(`Вы зашли в свой аккаунт ${u.name[name]}.`)
+                            z=false
+                            ncard = i;
+                            summС = u.money[i];
+                        }
+                        else{  z=true;
+                        }
+                      }
+                
+ }
+    if(z == true){
+                    alert("Неверная карта или пароль");
+                }       
+              }
+                // ввести пароль
+            
+              
+            
+
+
+  /* changpassword () {}  */ //изменение пароля
+
+   
+ 
+
+ 
+
+ 
+
+
+  transfMoney() { 
+    let ncard = prompt("На какую карту перевести?");
+                for(let i = 0; i <= u.ncard.length; i++){
+                    if(ncard == u.ncard[i]){
+                        let Money_ = prompt("сколько денег перевести");
+                        console.log(u.money[i])
+                        u.money[i] += Number(Money_);
+                        console.log(u.money[i])
+                        summC -= Money_;
+  }
+                }
+  
+
+                }
+
+
+            }
+   
+
+       
+
+</script>
+</body>
+</html>
