@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+class Product{
+    constructor(id,title,Category_id,brand_Id,Salers_ID){
+    this.id=id;
+    this.title=title;
+    this.Category_id=Category_id;
+    this.brand_Id=brand_Id;
+    this.Salers_ID=Salers_ID
+
+}
+}
+class Category{
+    constructor(id,title){
+this.id=id;
+this.title=title;
+
+    }
+
+}
+
+class Salers{
+    constructor(id,title){
+this.id=id;
+this.title=title;
+
+    }
+
+}
+
+class Brand{
+    constructor(id,title){
+this.id=id;
+this.title=title;
+
+    }
+
+}
+
+let prod=[]
+let cat=[]
+let sal=[]
+let br=[]
+prod.push(new Product(1,"t-shirts",1,2,1),new Product(2,"zucchini",2,5,2),new Product(3,"banana",3,3,3),new Product(4,"juice",4,4,4),new Product(5,"velvet_traction",5,1,5))
+prod.push(new Category(1,"clothes"),new Category(2,"vegetables"),new Category(3,"fruits"),new Category(4,"drinks"),new Category(5,"shoes"))
+prod.push(new  Salers(1,"Sasha"),new  Salers(2,"Vasya"),new  Salers(3,"Pety"),new  Salers(4,"Lexa"),(5,"Myxamad"))
+prod.push(new Brand(1,"Gusi"),new Brand(2,"Y_Myxamada"),(3,"Y_Pety"),d(4,"Lexidink"),(5,"Chyrkin_mir"))
+
+
+
+    </script>
+</body>
+</html>
