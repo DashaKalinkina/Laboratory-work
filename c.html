@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main" style="text-align: center;">
+
+
+        <article class="calcul" width: auto >
+          <output class="calcul_result" id="result" style=" font-size: 200%;"></output>
+          <button class="calcul_btn">7</button>
+          <button class="calcul_btn">8</button>
+          <button class="calcul_btn">9</button>
+           
+          <button class="calcul_btn calcul_btn_operator">+</button>
+            <button class="calcul_btn">4</button>
+            <button class="calcul_btn">5</button>
+            <button class="calcul_btn">6</button>
+            <button class="calcul_btn calcul_btn_operator">-</button>
+          <button class="calcul_btn">1</button>
+          <button class="calcul_btn">2</button>
+          <button class="calcul_btn">3</button>
+          <button class="calcul_btn calcul_btn_operator">*</button>
+            <button class="calcul_btn">0</button>
+            <button class="calcul_btn calcul_btn_operator">/</button>
+          <button class="calcul_btn  calcul_btn_reset">C</button>
+          <button class="calcul_btn  calcul_btn_equal">=</button>
+          <button class="calcul_btn calcul_btn_operator" id = "fact">!</button>  
+          <button class="calcul_btn calcul_btn_operator">pi</button>   
+          <button class="calcul_btn calcul_btn_operator">sqrt</button> 
+          
+          </div>
+          <script >
+            const cal = document.querySelector('.calcul');
+    const result = document.querySelector('#result');
+    
+    cal.addEventListener('click', function(event) {
+      if(!event.target.classList.contains('calcul_btn')) return;
+    
+      const value = event.target.innerText;
+    
+      switch(value) {
+        case 'C':
+          result.innerText = '';
+          break;
+
+        case 'pi':
+          result.innerText = result.innerText + '3.14';
+          break;
+    
+        case '!':
+          result.innerText = factorial();
+          break;
+    
+        case 'sqrt':
+     
+          result.innerText = Math.sqrt(result.innerText)
+          break;
+   
+        case '=':
+          if(result.innerText.search(/[^0-9*/+-]/mi) != -1) return;
+          
+        result.innerText = eval(result.innerText).toFixed(2);
+        break;
+    
+      default:
+        result.innerText += value;
+    
+      }
+   
+    function factorial() {
+        let factorial =  document.getElementById("result").value
+        console.log("resultt")
+        let result = 1;
+        for(let i = 2; i <= factorial; i++) {
+            result *= i;
+        }
+        console.log(result)
+    
+        return result
+       
+     }
+    
+   
+    
+    });
+    
+    let fact = document.getElementById("fact")
+    </script>
+</body>
+</html>
