@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class  Baza {
+  constructor() {
+    this.Category = [
+      { category_id: 1, name: "clothes" },
+      { category_id: 2, name: "vegetables" },
+      { category_id: 3, name: "fruits" },
+      { category_id: 4, name: "drinks" },
+      { category_id: 5, name: "shoes" },
+    ];
+    
+    this.Saler = [
+      { saler_id: 1, name: "Sasha" },
+      { saler_id: 2, name: "Vasya" },
+      { saler_id: 3, name: "Pety" },
+      { saler_id: 4, name: "Lexa" },
+      { saler_id: 5, name: "Myxamad" },
+    ];
+    
+    this.Orders = [
+      { id: 1, id_brand: 1,  category_id: 1, saler_id:  2 },
+      { id: 2, id_brand: 2,  category_id: 3, saler_id: 1 },
+      { id: 3, id_brand: 3, category_id: 2, saler_id: 3 },
+      { id: 4, id_brand: 5,  category_id: 4, saler_id: 3 },
+      { id: 5, id_brand: 3,  category_id: 3, saler_id: 1 },
+    ];
+    
+    this.brand = [
+      { id_brand: 1, name: "Gusi" },
+      { id_brand: 2, name: "Y_Myxamada" },
+      { id_brand: 3, name: "Y_Pety" },
+      { id_brand: 4, name: "Lexidink" },
+      { id_brand: 5, name: "Chyrkin_mir" },
+    ];
+  }
+
+  findById(id) {
+    const results = [];
+
+    const user = this.Category.find(category => category.category_id == id);
+    if (user) {
+      results.push(user);
+    }
+    
+    
+    const saler = this.Saler.find(saler => saler.saler_id === id);
+    if (saler) {
+      results.push(saler);
+    }
+
+    const brand = this.brand.find(brand => brand.id_brand === id);
+    if (brand) {
+      results.push(brand);
+    }
+    const orders = this.Orders.find(order => order.id === id);
+    if (orders) {
+      results.push(orders);
+    }
+    return {
+      user,
+      saler,
+      brand,
+      orders
+    }
+}
+        }
+
+const db = new Baza();
+
+console.log(db.findById()); 
+
+    </script>
+</body>
+</html>
