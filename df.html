@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      
+    <div>
+        <div class = "main">
+            <div class = "left_side"style=>
+                <button class = "btnSide" onclick="Attack(1, `attack`)">А</button>
+                <button class = "btnSide" onclick="Attack(1, `block`)">Б</button>
+                <button class = "btnSide" onclick="Attack(1, `innings`)">П</button>
+                <button class = "btnSide" onclick="Errors(1)">О</button>
+                <button class = "btnSide" onclick="Replace(1)">З</button>
+            </div>
+            <div class="center">
+                <div class="players"style="width: 400px; display: flex;flex-wrap: wrap; ">
+                    <div class="left_Players">
+                        <p>Первая команда</p>
+                        <p class = "player 1">5</p>
+                        <p class = "player 1">6</p>
+                        <p class = "player 1">1</p>
+                        <p class = "player 1">4</p>
+                        <p class = "player 1">3</p>
+                        <p class = "player 1">2</p>
+                    </div>
+                    <div class="left_Players">
+                        <p> Вторая команда</p>
+                        <p class = "player 2">2</p>
+                        <p class = "player 2">3</p>
+                        <p class = "player 2">4</p>
+                        <p class = "player 2">1</p>
+                        <p class = "player 2">6</p>
+                        <p class = "player 2">5</p>
+                    </div>
+                </div>
+            <div class = "left_side">
+                <button class = "btnSide" onclick="Attack(2, `attack`)">А</button>
+                <button class = "btnSide" onclick="Attack(2, `block`)">Б</button>
+                <button class = "btnSide" onclick="Attack(2, `innings`)">П</button>
+                <button class = "btnSide" onclick="Errors(2)">О</button>
+                <button class = "btnSide" onclick="Replace(2)">З</button>
+            </div>
+                <div class="main_score">
+                    <div class="score">
+                        <p >"Счет"</p>
+                        <p class = "score_text" id = "1"> 0 (0) </p>
+                    </div>
+                    <div class="score">
+                        <p class = "score_text" id = "2"> 0 (0)</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+  
+    
+    <script>
+            
+        let currentTeam = 1;
+
+        let currentNumber1 = 0;
+        let currentNumber2 = 0;
+
+        let currentAttackSide1 = 0;
+        let currentAttackSide2 = 0;
+        let currentInningsSide1 = 0;
+        let currentInningsSide2 = 0;
+        let currentBlockSide1 = 0;
+        let currentBlockSide2 = 0;
+        
+ 
+        function Attack(side, variant){
+        
+            let playerGoal = ``;
+            switch(variant){
+                case `attack`:
+                    playerGoal = prompt("Какой игрок атаковал?");
+                    if(side == 1)
+                        currentAttackSide1++;
+                    else
+                        currentAttackSide2++;
+                break;
+                case `block`:
+                    playerGoal = prompt("Какой игрок заблокировал и забил?");
+                    if(side == 1)
+                        currentBlockSide1++;
+                    else
+                        currentBlockSide2++;
+                break;
+                case `innings`:
+                    playerGoal = prompt("Какой игрок забил при помощи подачи?");
+                    if(side==1)
+                        currentInningsSide1++;
+                    else
+                        currentInningsSide2++;
+                break;
+            }
+        
+
+            let playerValues = [];
+            let players = document.getElementsByClassName(`${side}`);
+                let playerValuesInt = [];
+                for(let i = 0; i < 6; i++){
+                    playerValuesInt.push(players[i].textContent);
+                }
+            
+            let playerExists = false;
+
+            for (let i = 0; i < playerValuesInt.length; i++) {
+                    if (playerGoal == playerValuesInt[i]) {
+                        console.log(`Player ${playerGoal} from team ${side} scored!`);
+                        if(side == 1){
+                            currentNumber1++;{
+                      
+                            
+                            document.getElementById(`1`).textContent = `${currentNumber1}  `;
+                        }}
+                        else{
+                            currentNumber2++;{
+                      
+                            
+                            document.getElementById(`2`).textContent = `${currentNumber2}  `;
+                         }
+                        } }playerExists = true;
+                     }
+            
+                    
+            if(playerExists){
+                
+            }
+            else{
+                alert("Такого игрока не существует или он не вышел на поле!");
+            }
+        
+        }
+        
+        function Errors(side){
+         
+            let playerGoal = prompt("какой игрок совершил ошибку?");
+
+            let playerValues = [];
+            let players = document.getElementsByClassName(`${side}`);
+                let playerValuesInt = [];
+                for(let i = 0; i < 6; i++){
+                    playerValuesInt.push(players[i].textContent);
+                }
+            
+            let playerExists = false;
+
+            for (let i = 0; i < playerValuesInt.length; i++) {
+                    if (playerGoal == playerValuesInt[i]) {
+                        console.log(`Player ${playerGoal} from team ${side} scored!`);
+                        if(side == 1){
+                            currentNumber2++;
+                        {
+                             
+                                currentNumber2 = 0;
+                            }
+                            document.getElementById(`2`).textContent = `${currentNumber2} (0)`;
+                            side = 2;
+                        }
+                        else{
+                            currentNumber1++;
+                     {
+                            
+                                currentNumber1 = 0;
+                            }
+                            document.getElementById(`1`).textContent = `${currentNumber1} (0)`;
+                            side = 1;
+                        }
+                     
+                            currentTeam = side;
+                            let players = document.getElementsByClassName(`${side}`);
+                            let playerValues = [];
+                            let playerValuesInt = [];
+
+                            for(let i = 0; i < 6; i++){
+                                playerValues.push(players[i].textContent);
+                                playerValuesInt.push(players[i].textContent);
+                            }
+                            for(let i = 0; i <4; i++){
+                                playerValuesInt.shift();
+                            }
+                            playerValuesInt.unshift(playerValues[0]);
+                            playerValuesInt.pop();
+                            playerValuesInt.pop();
+                            playerValuesInt.push(playerValues[3]);
+                            playerValuesInt.push(playerValues[4]);
+                            
+                            playerValuesInt.unshift(playerValues[5]);
+                            playerValuesInt.unshift(playerValues[2]);
+                            playerValuesInt.unshift(playerValues[1]);
+                            
+                            
+                        
+                            for(let i = 0; i < 6; i++){
+                                players[i].textContent = playerValuesInt[i];
+                            }
+                            playerExists = true;
+                        }
+                        
+                        
+                    }
+            
+
+            if(playerExists == false){
+                alert("Такого игрока не существует или он не вышел на поле!");
+            }
+        }
+        function Replace(side) {
+        let playerValues = [];
+        let active = false;
+        let players = document.getElementsByClassName(`${side}`);
+        let playerValuesInt = [];
+        for (let i = 0; i < 6; i++) {
+            playerValuesInt.push(players[i].textContent);
+        }
+        
+        let playerPast = prompt("Какого игрока вы хотите заменить?");
+        let playerIndex = playerValuesInt.indexOf(playerPast);
+        if (playerIndex === -1) {
+            alert("Такого игрока не существует или он не вышел на поле!");
+            return;
+        }
+
+        let playerNext = prompt("На какого вы хотите заменить?");
+        playerValuesInt[playerIndex] = playerNext;
+        
+        for (let i = 0; i < 6; i++) {
+            players[i].textContent = playerValuesInt[i];
+        }
+        }
+     
+    </script>
+</body>
+</html>
