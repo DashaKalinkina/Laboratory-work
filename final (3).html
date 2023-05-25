@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <textarea id = "name"></textarea>
+	<textarea id = "password"></textarea>
+	<button id="register" onclick="singup()">Sing up</button>
+	<button id="login" onclick="login()">Log in</button>
+
+    <button onclick="let a = new person; a.checkbalance()" id="button1" disabled>Проверить баланс</button>
+    <button onclick="let b = new person; b.topupwmoney()" id="button2" disabled>Пополнить счет</button>
+    <button onclick="let c = new person; c.Wasteofmoney()" id="button3" disabled>Добавить трату</button>
+    <button onclick="let d = new person; d.Predict()" id="button4" disabled>Предсказание трат\пополнения</button>
+    <button onclick="let i = new person; i.payformonth()" id="button5" disabled>Траты за месяц</button>
+    <button onclick="let g = new person; g.payforall()" id="button6" disabled>Все траты</button>
+
+    <script>
+        let names = [];
+  	    let passwords = [];
+        function login() {
+    let login = document.getElementById("name").value;
+    let password = document.getElementById("password").value;
+
+	for(let index = 0; index <= names.length && index <= passwords.length; index++){
+		if(login == names[index] && password == passwords[index]){
+			var check = 1;
+		}
+	}
+    if (check == 1) {
+      alert("Вход одобрен");
+        let button7 = document.getElementById('register').disabled = true
+        let button8 = document.getElementById('login').disabled = true
+        let button1 = document.getElementById('button1').disabled = false
+        let button2 = document.getElementById('button2').disabled = false
+        let button3 = document.getElementById('button3').disabled = false
+        let button4 = document.getElementById('button4').disabled = false
+        let button5 = document.getElementById('button5').disabled = false
+        let button6 = document.getElementById('button6').disabled = false
+    } else alert("Вход отклонен");
+    }
+        function singup() {
+    let login = document.getElementById("name").value;
+    let password = document.getElementById("password").value;
+
+    let nameTaken = names.includes(login);
+
+    if (!nameTaken) {
+      names.push(login);
+      passwords.push(password);
+      alert("Регистрация завершена");
+    } 
+	else {
+        alert("Регистрация не завершена");
+    }
+  }
+        let arr1 = []
+        let arr1_1 = []
+        let arr2 = []
+        let arr2_2 = []
+        let arr3 = []
+        let arr3_3 = []
+        let arr4 = []
+        let arr4_4 = []
+
+        function getMonthFromDate(dateString) {
+                let date = new Date(dateString);
+                let month = date.getMonth() + 1;
+                return month;}
+        class spend{
+            constructor(month, category, amount){
+                this.month = month
+                this.category = category
+                this.amount = amount
+            }
+        }
+        class second_spend{
+            constructor(month, category, amount){
+                this.month = month
+                this.category = category
+                this.amount = amount
+            }
+        }
+        class  Topupwithmoney{
+            constructor(amount){
+                this.amount = amount
+        }}
+        class second_badtrip{
+            constructor(amount){
+                this.amount = amount
+        }}
+        class Balance{
+            constructor(Balance){
+                this.Balance = Balance
+            }
+        }
+        class second_balance{
+            constructor(Balance){
+                this.Balance = balance
+            }
+        }
+        class person{
+            Wasteofmoney()
+            {
+                let card = prompt("Какая карта будет использванна")
+                let buyDate = prompt("Дата покупки")
+                let category = prompt("Категория")
+                let amount = prompt("Cумма")
+
+                if(card == 1)
+                {
+                    let BuyMonth = getMonthFromDate(buyDate)
+                    arr1.push(new spend(BuyMonth, buyDate, parseInt(amount)))
+                    localStorage.setItem("spend", JSON.stringify(arr1))
+                    console.log(arr1)
+                } else
+                {
+                    let BuyMonth = getMonthFromDate(buyDate)
+                    arr1_1.push(new second_spend(BuyMonth, buyDate, parseInt(amount)))
+                    localStorage.setItem("second_spend", JSON.stringify(arr1_1))
+                    console.log(arr1_1)
+                }
+            }
+            topupwmoney(){
+                let card = prompt("какая карта будет использванна")
+                let amount = prompt("сумма прихода")
+                if(card == 1)
+                {
+                    arr2.push(new  Topupwithmoney (parseInt(amount)))
+                    localStorage.setItem("badtrip", JSON.stringify(arr2))
+                    console.log(arr2)
+                }else
+                {
+                    arr2_2.push(new second_badtrip(amount))
+                    localStorage.setItem("second_badtrip", JSON.stringify(arr2_2))
+                    console.log(arr2_2)
+                }
+            }
+            checkbalance()
+            {
+                let sum = 0
+                let card = prompt("какая карта будет использванна")
+                if (card == 1) 
+                {
+                    let maxlength = Math.max(arr2.length, arr1.length)
+                    for(let i = 0; i < maxlength; i++)
+                    {
+                      if (arr1[i] !== undefined)
+                        {
+                            sum -= arr1[i].amount;
+                        }
+                      if (arr2[i] !== undefined)
+                        {
+                            sum += arr2[i].amount 
+                        }
+                    }
+                    arr3.push(new Balance(sum))
+                    localStorage.setItem("Баланс", JSON.stringify(arr3))
+                    console.log(arr3)
+                }else
+                {
+                    let maxlength = Math.max(arr2_2.length, arr1_1.length)
+                    for(let i = 0; i < maxlength; i++){
+                      if (arr1_1[i] !== undefined){
+                        sum -= arr1_1[i].amount;
+                    }
+                      if (arr2_2[i] !== undefined){
+                        sum += arr2_2[i].amount 
+                    }
+                    }
+                    arr3_3.push(new balance(sum))
+                    localStorage.setItem("second_balance", JSON.stringify(arr3_3))
+                    console.log(localStorage.getItem("second_balance"))
+                }
+                    
+                    }
+            payformonth()
+            {
+                let card = prompt("Какая карта будет использванна")
+                let month = prompt("В каком месяце была покупка")
+                if (card == 1)
+                {
+                    let a = getMonthFromDate(month)
+                    for(let index = 0; index < arr1.length; index++)
+                    {
+                        if(arr1[index].month === a)
+                        {
+                            arr4.push(arr1[index])
+                        }
+                    }
+                    var get = arr4.reduce((sum, arr4) => sum + arr4.amount, 0)
+                    console.log(get)
+                } else 
+                {
+                    for(let i = 0; i < arr1_1.length; i++)
+                    {
+                        if(arr1_1[i].month == monthe)
+                        {
+                            arr4_4.push(arr1_1[i])
+                        }
+                    }
+                    get = arr4_4.reduce((sum, arr4_4) => sum + arr4_4.amount, 0)
+                    console.log(get)
+                }
+            }
+            payforall()
+            {
+                let card = prompt("какая карта будет использванна")
+                if (card == 1)
+                {
+                    // общая сумма трат
+                    let totalExpenses = arr1.reduce((sum, expense) => sum + expense.amount, 0);
+                    let categories = {};
+                    arr1.forEach(expense => {
+                    if (categories[expense.category]) {
+                        categories[expense.category] += expense.amount;
+                    } else {
+                        categories[expense.category] = expense.amount;
+                        }});
+                    
+                        let percentages = {};
+                        Object.entries(categories).forEach(([category, amount]) => {
+                        percentages[category] = (amount / totalExpenses) * 100;})
+                        let sortedCategories = Object.keys(percentages).sort((a, b) => percentages[b] - percentages[a]);
+
+                        console.log(percentages);
+                }
+            }
+            Predict()
+            {
+                let card = prompt("какая карта будет использванна")
+                if(card == 1)
+                {
+                    let predictspend = arr1.reduce((sum, expense) => sum + expense.amount, 0);
+                    predictspend *= .5
+                    let predictbadtrip = arr2.reduce((sum, expense) => sum + expense.amount, 0);
+                    predictbadtrip *= .5
+                    console.log("ожидание прихода", predictbadtrip, "предикт трат", predictspend)
+                } else
+                {
+                    let predictspend = arr1_1.reduce((sum, expense) => sum + expense.amount, 0);
+                    predictspend *= .5
+                    let predictbadtrip = arr2_2.reduce((sum, expense) => sum + expense.amount, 0);
+                    predictbadtrip *= .5
+                    console.log("ожидание прихода", predictbadtrip, "предикт трат", predictspend)
+                }
+            }
+        }
+    </script>
+</body>
+</html>
